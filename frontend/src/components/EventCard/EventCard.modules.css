@@ -1,0 +1,14 @@
+.description {
+    cursor: pointer;
+}
+
+.title_link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.title_link:hover {
+    color: blue;
+    text-decoration: underline;
+}

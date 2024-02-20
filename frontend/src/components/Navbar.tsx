@@ -1,8 +1,8 @@
 import { Button, Container, Flex } from '@mantine/core';
 import { Image } from '@mantine/core';
-import Logo from '../../assets/htn_logo.jpg';
+import Logo from '../assets/htn_logo.jpg';
 import { Link, useNavigate } from '@tanstack/react-router';
-import { AuthContext } from '../../contexts/authContext';
+import { AuthContext } from '../contexts/authContext';
 import { useContext } from 'react';
 
 export default function Navbar() {
