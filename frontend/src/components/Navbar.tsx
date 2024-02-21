@@ -2,15 +2,14 @@ import { Button, Container, Flex } from '@mantine/core';
 import { Image } from '@mantine/core';
 import Logo from '../assets/htn_logo.jpg';
 import { Link, useNavigate } from '@tanstack/react-router';
-import { AuthContext } from '../contexts/authContext';
-import { useContext } from 'react';
+import { useAuth } from '../hooks/useAuth/useAuth';
 
 export default function Navbar() {
-  const auth = useContext(AuthContext)
+  const auth = useAuth()
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    auth?.logout()
+    auth.logout()
     navigate({to: "/login"})
   }
   
@@ -38,9 +37,7 @@ export default function Navbar() {
         <Link to="events">
           Events
         </Link>
-        
-        {
-          auth?.user === null ?
+        {!auth.isAuthenticated() ? 
           <Link to="login">
             <Button>
               Login

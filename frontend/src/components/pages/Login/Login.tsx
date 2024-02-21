@@ -1,19 +1,22 @@
 import { useNavigate } from '@tanstack/react-router'
-import { useContext, useState } from 'react'
-import { AuthContext } from '../../contexts/authContext'
+import { useAuth } from '../../../hooks/useAuth/useAuth'
 import { Button, TextInput, Flex } from '@mantine/core'
+import { useState } from 'react'
+
+const widths = {"xs": "90%", "sm": "70%", "lg": "50%"}
+
 
 export function Login() {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    const auth = useContext(AuthContext)
+    const auth = useAuth()
     const navigate = useNavigate()
 
     const handleLogin = async () => {
         try {
-            auth?.login(username, password)
+            auth.login(username, password)
             navigate({to: '/events'})
         }catch(e){
             console.error(e)
@@ -32,16 +35,16 @@ export function Login() {
             <TextInput
                 label="Username"
                 onChange={(event) => setUsername(event.currentTarget.value)}
-                w="25%"
+                w={widths}
             />
             <TextInput
                 label="Password"
                 type="password"
                 onChange={(event) => setPassword(event.currentTarget.value)}
-                w="25%"
+                w={widths}
             />
             <Button            
-                w="25%"
+                w={widths}
                 onClick={handleLogin}
             >
                 Login

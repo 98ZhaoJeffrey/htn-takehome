@@ -1,11 +1,11 @@
 import { Flex, LoadingOverlay, Title, Container, Center } from "@mantine/core"
-import { useEvents } from "../../hooks/useEvents/useEvents"
-import { TEvent, TEventSort, TEventType } from "../../types"
-import { EventCard } from "../EventCard/EventCard"
-import { EventsSearchBar } from "../EventsSearchBar"
-import { eventSortFunctions } from "../../constants"
+import { useEvents } from "../../../hooks/useEvents/useEvents"
+import { TEvent, TEventSort, TEventType } from "../../../types"
+import { EventCard } from "../../EventCard/EventCard"
+import { EventsSearchBar } from "../../EventsSearchBar"
+import { eventSortFunctions } from "../../../constants"
 import { useState } from "react"
-import { createFilterEventsByName, createFilterEventsByType } from "../../utils/filterEvents"
+import { createFilterEventsByName, createFilterEventsByType } from "../../../utils/filterEvents"
 
 export function Events() {
 
@@ -45,7 +45,7 @@ export function Events() {
                 loaderProps={{ color: 'pink', type: 'bars' }}
             />
             <Center>
-    `            <Flex direction="column" gap="1rem" align="center" w="50%">
+    `            <Flex direction="column" gap="1rem" align="center" w={{sm: "70%", lg: "50%"}}>
                     {data?.map((event: TEvent, index: number) => {
                         return (
                             <EventCard 

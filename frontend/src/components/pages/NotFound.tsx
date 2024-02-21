@@ -17,7 +17,7 @@ export const NotFound = (props: PageNotFoundProps) => {
                 {props.message ? props.message : DEFAULT_NOT_FOUND_MESSAGE} 
             </Text>
             <Link to="/">
-                Home
+                Let's go Home
             </Link>
         </Container>
     )
