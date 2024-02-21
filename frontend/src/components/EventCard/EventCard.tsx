@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { Card, Text, Group, Badge } from '@mantine/core';
+import { Card, Text, Group, Tooltip } from '@mantine/core';
 import { Link } from '@tanstack/react-router';
-import { TEventType } from "../../types"
+import { FaLock } from "react-icons/fa6";
+import { TEventType, TPermission } from "../../types"
 import { formatDate, formatTime } from "../../utils/formatTime"
 import "./EventCard.modules.css"
+import { EventBadge } from '../EventBadge';
 
 interface EventCardProps {
     id: number,
@@ -11,39 +13,8 @@ interface EventCardProps {
     event_type: TEventType,
     description?: string,
     start_time: number,
-    end_time: number
-}
-interface EventBadgeProps {
-    eventType: TEventType;
-}
-
-function EventBadge (props: EventBadgeProps) {
-    const badge_variants = {
-        "workshop" : {
-            text: "Workshop",
-            emoji: "✏️",
-            color: "green"
-        },
-        "activity" : {
-            text: "Activity",
-            emoji: "🎲",
-            color: "blue"
-        },
-        "tech_talk" : {
-            text: "Text Talk",
-            emoji: "💬",
-            color: "red"
-        }
-    }
-
-    const variant = badge_variants[props.eventType]
-
-    return ( 
-        <Badge variant="light" color={variant.color} leftSection={variant.emoji}>
-            {variant.text}
-        </Badge>
-    )
-    
+    end_time: number,
+    permission?: TPermission
 }
 
 export function EventCard (props: EventCardProps) {
@@ -51,13 +22,20 @@ export function EventCard (props: EventCardProps) {
     const [isTextExpanded, setIsTextExpanded] = useState(false);
 
     return (
-        <Card withBorder radius="lg" p='2rem' w='50%'>
+        <Card withBorder radius="lg" p='2rem' w="100%">
             <Card.Section>
                 <Group>
-                    <Link to="/" className="title_link">
+                    <Link to="/event/$eventId" params={{ eventId: String(props.id) }} className="title_link">
                         {props.name}
                     </Link>                        
                     <EventBadge eventType={props.event_type}/>
+                    {props.permission && props.permission === "private" && 
+                        <Tooltip label="Event only for signed in users">
+                            <Text>
+                                <FaLock/>
+                            </Text>
+                        </Tooltip>
+                    }
                 </Group>
             </Card.Section>
             <Text 

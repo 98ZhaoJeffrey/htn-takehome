@@ -26,3 +26,6 @@ export type TEvent = {
 
 // What the endpoints will return
 export type TEndpointResponse = TEvent | TEvent[];
+
+
+export type TEventSort = "Start Time" | "Name (Alpha)"

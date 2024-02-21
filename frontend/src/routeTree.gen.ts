@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
+import { Route as EventEventIdRouteImport } from './routes/event.$eventId.route'
 
 // Create Virtual Routes
 
@@ -43,6 +44,11 @@ const IndexLazyRoute = IndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
+const EventEventIdRouteRoute = EventEventIdRouteImport.update({
+  path: '/event/$eventId',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -63,6 +69,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteLazyImport
       parentRoute: typeof rootRoute
     }
+    '/event/$eventId': {
+      preLoaderRoute: typeof EventEventIdRouteImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -73,6 +83,7 @@ export const routeTree = rootRoute.addChildren([
   LayoutRoute,
   EventsRouteLazyRoute,
   LoginRouteLazyRoute,
+  EventEventIdRouteRoute,
 ])
 
 /* prettier-ignore-end */
