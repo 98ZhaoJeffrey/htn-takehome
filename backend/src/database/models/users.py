@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 from uuid import uuid4
@@ -12,6 +12,7 @@ class User(Base):
     company =  Column(String(120), nullable=False)
     phone = Column(String(120), nullable=False)
     skills = relationship('Skill', backref='user', lazy=True)
+    transport = Column(UUID, ForeignKey('transport.id'), nullable=True)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -28,6 +29,7 @@ class User(Base):
             "email": self.email,
             "company" : self.company,
             "phone": self.phone,
-            "skills" : [skill.to_dict() for skill in self.skills]
+            "skills" : [skill.to_dict() for skill in self.skills],
+            "transport": self.transport.id
         }
     
