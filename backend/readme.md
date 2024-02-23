@@ -39,6 +39,27 @@ Under Skills, we have
 </ul>
 
 
+Transports is a model for helping hackers get to HTN, assume HTN has bought tickets and wants to give them
+out to users for them to be able to travel here. However, there are limited supply of each type of transport
+
+We have these routes
+
+<ul>
+    <li>
+        GET /transport/
+        Returns all transports that is provided
+    </li>
+    <li>
+        GET /remaining/<uuid:transport_id>
+        Returns the number of seats remaining for the given transport
+    </li>
+    <li>
+        POST /assign/
+        Assigns the transport ticket to a hacker, unless they already have one or if we even have a ticket remaining
+    </li>
+</ul>
+
+
 ## Utility function
 
 Under utils, there is a uploadDataToDb, which uploads all the data in the json file to PostgreSQL
