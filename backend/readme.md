@@ -1,14 +1,14 @@
 # Hack the North 2021 Backend Boilerplate
 
 ## Installation
-    Create an virtual env and install all the packages
-    cd into src and run ```flask--app main run```
+Create an virtual env and install all the packages
+cd into src and run ```flask--app main run```
 
 ## Setup own PostgreSQL instance
 
-    Inside of database/database.py, change out the url in create engine to your own PostgresSQL instance
+Inside of database/database.py, change out the url in create engine to your own PostgresSQL instance
 
-    For your convinence, I have included the one that I used during developement, so nothing has to be changed, in a real production, I would store it in an env file and load from there
+For your convinence, I have included the one that I used during developement, so nothing has to be changed, in a real production, I would store it in an env file and load from there
 
 
 ## Routes
@@ -41,8 +41,8 @@ Under Skills, we have
 
 ## Utility function
 
-    Under utils, there is a uploadDataToDb, which uploads all the data in the json file to PostgreSQL
+Under utils, there is a uploadDataToDb, which uploads all the data in the json file to PostgreSQL
 
-    Run it using ```python -m uploadDataToDb``` in the utils folder
+Run it using ```python -m uploadDataToDb``` in the utils folder
 
-    If you need to completely wipe out the database and reupload, uncomment the first line under main
+If you need to completely wipe out the database and reupload, uncomment the first line under main
