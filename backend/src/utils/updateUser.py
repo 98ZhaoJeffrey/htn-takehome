@@ -1,6 +1,15 @@
 from ..database import Skill
 
 def update_user(user, update_data):
+    """Updates user based on the update_data
+
+        Parameters:
+            user: User The user that needs to be updated
+            update_date: Dict The information that the user should get updated with
+
+        Returns:
+            Skills[]: The newly created skills that the user did not have
+    """
     
     add_to_db = [] # if we have to add skills, we need to add them to db later
     for key, value in update_data.items():

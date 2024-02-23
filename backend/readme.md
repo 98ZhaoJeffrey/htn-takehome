@@ -12,31 +12,31 @@
 
 
 ## Routes
-    Under Users, we have the following routes:
+Under Users, we have the following routes:
 
-    <ul>
-        <li>
-            ``` GET /users/ ```
-            Gets all user data
-        </li>
-        <li>
-            ``` GET /users/:id ```
-            Gets user with that id
-        </li>
-        <li>
-            ``` PUT /users/:id ```
-            Updates user given a id 
-        </li>
-    </ul>
+<ul>
+    <li>
+        GET /users/
+        Gets all user data
+    </li>
+    <li>
+        GET /users/:id
+        Gets user with that id
+    </li>
+    <li>
+        PUT /users/:id
+        Updates user given a id 
+    </li>
+</ul>
 
-    
-    Under Skills, we have
-    <ul>
-        <li>
-            ``` GET /skills/?min_frequency=5&max_frequency=10 ```
-            Aggregates the count of skills by name and filters by the count
-        </li>
-    </ul>
+
+Under Skills, we have
+<ul>
+    <li>
+        GET /skills/?min_frequency=5&max_frequency=10
+        Aggregates the count of skills by name and filters by the count
+    </li>
+</ul>
 
 
 ## Utility function

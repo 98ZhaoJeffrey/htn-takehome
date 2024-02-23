@@ -2,7 +2,6 @@ from flask import Flask
 from .routes import user_blueprint, skill_blueprint
 
 app = Flask(__name__)
-app.debug = True
 
 app.register_blueprint(user_blueprint, url_prefix='/users')
 app.register_blueprint(skill_blueprint, url_prefix='/skills')

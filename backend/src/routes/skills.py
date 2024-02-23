@@ -6,6 +6,15 @@ skill_blueprint = Blueprint('skill', __name__,)
 
 @skill_blueprint.route('/', methods=['GET'])
 def number_user_specific_skill():
+    """Endpoint for counting how many users have a skill 
+
+        Parameters:
+            min_frequency:int The minimum number of users that share this skill
+            max_frequency:int The maximum number of users that share this skill
+
+        Returns:
+            JSON: pair of skill name and number of users who share the skill
+    """
 
     min_frequency = request.args.get('min_frequency')
     max_frequency = request.args.get('max_frequency')

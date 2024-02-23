@@ -9,10 +9,29 @@ from src.database.models import User, Skill
 JSON_URL = 'https://gist.githubusercontent.com/DanielYu842/607c1ae9c63c4e83e38865797057ff8f/raw/b84b8bce73fadb341258e86265a6091779908344/HTN_2023_BE_Challenge_Data.json'
 
 def get_data():
+    """Loads the data from url
+    
+        Parameters:
+
+        Returns:
+            JSON: The json of the data
+    
+    """
     req = requests.get(JSON_URL)
     return req.json()
 
 def upload_data_to_db(data):
+    """Uploads the data to a database
+
+        Parameters:
+            data: Dict The data that will be uploaded to the database
+
+        Returns:
+            Dict(String, Int): The successrate of uploads for users and skills 
+    
+    """
+
+
     completed_users = 0
     completed_skills = 0
     total_skills = 0
